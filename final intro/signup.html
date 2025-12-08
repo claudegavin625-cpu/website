@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Car Rental</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <h2>Create Account</h2>
+        <p>Join us to book your ride today.</p>
+        <form id="signupForm" class="auth-form">
+            <input type="text" id="signupName" placeholder="Full Name" required>
+            <input type="email" id="signupEmail" placeholder="Email Address" required>
+            <input type="password" id="signupPassword" placeholder="Password" required>
+            <button type="submit" class="auth-btn">Sign Up</button>
+        </form>
+        <div class="auth-links">
+            Already have an account? <a href="login.html">Sign In</a>
+        </div>
+        <div id="authMessage" class="message"></div>
+        <a href="home.html" class="back-home">← Back to Home</a>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

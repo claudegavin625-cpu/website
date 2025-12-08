@@ -1093,3 +1093,200 @@ body {
         padding: 50px 20px;
     }
 }
+
+/* --- Authentication Pages Styling --- */
+.auth-body {
+    background: #eeeff1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.auth-container {
+    background: #fff;
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.auth-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.auth-container p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.auth-form input {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    outline: none;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.auth-form input:focus {
+    border-color: #474fa0;
+}
+
+.auth-btn {
+    background: #474fa0;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-btn:hover {
+    background: skyblue;
+}
+
+.auth-links {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.auth-links a {
+    color: #474fa0;
+    font-weight: 500;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
+.back-home {
+    display: inline-block;
+    margin-top: 20px;
+    color: #666;
+    font-size: 0.85rem;
+}
+/* --- Admin Dashboard Styling --- */
+.admin-container {
+    padding: 100px 100px 50px;
+    background: #f9f9f9;
+    min-height: 100vh;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.admin-header h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    border-bottom: 4px solid var(--main-color);
+}
+
+.stat-box h3 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.stat-box p {
+    color: #666;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.recent-bookings {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.recent-bookings h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.booking-table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: #f4f4f4;
+    color: #555;
+    font-weight: 600;
+}
+
+/* Status Colors */
+.status-pending { color: orange; font-weight: 600; }
+.status-confirmed { color: green; font-weight: 600; }
+.status-cancelled { color: red; font-weight: 600; }
+
+/* Action Buttons */
+.action-btn {
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: none;
+    margin-right: 5px;
+    transition: 0.3s;
+}
+
+.btn-confirm { background: #d4edda; color: #155724; }
+.btn-confirm:hover { background: #c3e6cb; }
+
+.btn-cancel { background: #f8d7da; color: #721c24; }
+.btn-cancel:hover { background: #f5c6cb; }
+
+/* Responsive Admin */
+@media (max-width: 768px) {
+    .admin-container { padding: 80px 20px 20px; }
+    .stat-box h3 { font-size: 2rem; }
+}

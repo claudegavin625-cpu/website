@@ -19,46 +19,53 @@
             <li><a href="reviews.html">Reviews</a></li>
         </ul>
         <div class="header-btn">
-            <a href="#" class="sign-up">Sign Up</a>
-            <a href="#" class="sign-in">Sign In</a>
+            <a href="signup.html" class="sign-up">Sign Up</a>
+            <a href="login.html" class="sign-in">Sign In</a>
         </div>
     </header>
 
     <section class="book" id="book">
         <div class="heading">
             <span>Booking</span>
-            <h1>Book Now</h1>
+            <h1>Book Your Ride</h1>
         </div>
         <div class="container">
             <form id="bookingForm">
                 <h2>Booking Details</h2>
+                <p style="text-align:center; margin-bottom:20px; color:#666;">Fill up the form to send a request to the admin.</p>
+                
                 <label>Full Name</label>
-                <input type="text" id="name" placeholder="Enter your name">
+                <input type="text" id="name" placeholder="Enter your full name" required>
 
                 <label>Contact Number</label>
-                <input type="text" id="contact" placeholder="Enter your number">
+                <input type="tel" id="contact" placeholder="e.g., 0912 345 6789" required>
 
                 <label>Email Address</label>
-                <input type="email" id="email" placeholder="Enter your email">
+                <input type="email" id="email" placeholder="Enter your email" required>
 
-                <label>Pick-Up Date</label>
-                <input type="date" id="pickup">
-
-                <label>Return Date</label>
-                <input type="date" id="return">
+                <div style="display: flex; gap: 1rem;">
+                    <div style="flex: 1;">
+                        <label>Pick-Up Date</label>
+                        <input type="date" id="pickup" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label>Return Date</label>
+                        <input type="date" id="return" required>
+                    </div>
+                </div>
 
                 <label>Select Car</label>
-                <select id="car">
+                <select id="car" required>
                     <option value="">-- Select a Car --</option>
-                    <option>2023 Vios</option>
-                    <option>2024 Vios</option>
-                    <option>2022 Innova</option>
-                    <option>2022 Hiace</option>
-                    <option>2017 Mirage G4</option>
-                    <option>2016 Mirage Hatchback</option>
+                    <option value="2023 Vios">2023 Vios</option>
+                    <option value="2024 Vios Red">2024 Vios (Red)</option>
+                    <option value="2022 Innova">2022 Innova</option>
+                    <option value="2022 Hiace">2022 Hiace</option>
+                    <option value="2017 Mirage G4">2017 Mirage G4</option>
+                    <option value="2016 Mirage Hatchback">2016 Mirage Hatchback</option>
                 </select>
 
-                <button type="submit">Submit Booking</button>
+                <button type="submit">Submit Booking Request</button>
                 <div id="message" class="message"></div>
             </form>
         </div>
@@ -68,22 +75,18 @@
         <div class="footer-container">
             <div class="footer-box">
                 <a href="#" class="logo"><img src="logo1.jpg" alt=""></a>
-                <p>We provide affordable and reliable car rental services for all your travel needs.</p>
+                <p>We provide affordable and reliable car rental services.</p>
                 <div class="social-footer">
                     <a href="#"><i class='bx bxl-facebook'></i></a>
-                    <a href="#"><i class='bx bxl-twitter'></i></a>
                     <a href="#"><i class='bx bxl-instagram'></i></a>
-                    <a href="#"><i class='bx bxl-tiktok'></i></a>
                 </div>
             </div>
             <div class="footer-box">
                 <h3>Page Links</h3>
                 <div class="link-list">
                     <a href="home.html">Home</a>
-                    <a href="about.html">About Us</a>
                     <a href="services.html">Services</a>
                     <a href="book.html">Book Now</a>
-                    <a href="reviews.html">Reviews</a>
                 </div>
             </div>
             <div class="footer-box">
@@ -91,15 +94,6 @@
                 <div class="contact-info">
                     <p><i class='bx bxs-map'></i> Cagayan De Oro City, PH</p>
                     <p><i class='bx bxs-phone'></i> +63 912 345 6789</p>
-                    <p><i class='bx bxs-envelope'></i> info@carrental.com</p>
-                </div>
-            </div>
-            <div class="footer-box">
-                <h3>Newsletter</h3>
-                <p>Subscribe for the latest updates and offers.</p>
-                <div class="newsletter-box">
-                    <input type="email" placeholder="Enter your email">
-                    <a href="#" class="btn">Subscribe</a>
                 </div>
             </div>
         </div>
