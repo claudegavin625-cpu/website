@@ -544,3 +544,121 @@ body {
         grid-template-columns: repeat(auto-fit,minmax(254px,auto));
     }
 }
+
+/* Footer Styling */
+.footer {
+    background: #fff;
+    padding: 50px 100px;
+}
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, auto));
+    gap: 2rem;
+}
+.footer-box {
+    display: flex;
+    flex-direction: column;
+}
+.footer-box h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--main-color);
+}
+.footer-box p {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+.footer-box .logo img {
+    width: 50px;
+    margin-bottom: 1rem;
+}
+.social-footer {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+.social-footer a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #eeeff1;
+    color: var(--text-color);
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+.social-footer a:hover {
+    background: var(--main-color);
+    color: #fff;
+    transform: translateY(-3px);
+}
+.link-list a {
+    display: block;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    transition: 0.3s;
+}
+.link-list a:hover {
+    color: var(--main-color);
+    transform: translateX(5px);
+}
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.contact-info i {
+    color: var(--main-color);
+    font-size: 1.2rem;
+}
+
+/* Newsletter in Footer */
+.newsletter-box input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #eeeff1;
+    border-radius: 0.5rem;
+    outline: none;
+    margin-bottom: 10px;
+}
+.newsletter-box .btn {
+    display: inline-block;
+    background: #474fa0;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.newsletter-box .btn:hover {
+    background: var(--main-color);
+}
+
+.copyright {
+    text-align: center;
+    padding: 20px;
+    margin-top: 2rem;
+    border-top: 1px solid #eeeff1;
+}
+.copyright p {
+    color: var(--text-color);
+}
+
+/* Responsive Footer */
+@media (max-width: 991px) {
+    .footer {
+        padding: 40px;
+    }
+}
+@media (max-width: 450px) {
+    .footer {
+        padding: 30px 20px;
+    }
+}
