@@ -3,108 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Rental</title>
-    <!-- Custom CSS -->
+    <title>Car Rental - Book</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Boxicons CDN Link -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 </head>
 <body>
-    <!--Header-->
     <header>
-        <a href="#" class="logo"><img src="logo1.jpg" alt=""></a>
-
+        <a href="home.html" class="logo"><img src="logo1.jpg" alt=""></a>
         <div class="bx bx-menu" id="menu-icon"></div>
-
         <ul class="navbar">
-            <li><a href="home.html" class="active">Home</a></li>
+            <li><a href="home.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="services.html">Services</a></li>
-            <li><a href="book.html">Book</a></li>
+            <li><a href="book.html" class="active">Book</a></li>
             <li><a href="reviews.html">Reviews</a></li>
         </ul>
         <div class="header-btn">
             <a href="#" class="sign-up">Sign Up</a>
             <a href="#" class="sign-in">Sign In</a>
-            </div>
+        </div>
     </header>
 
     <section class="book" id="book">
-            <div class="heading">
-            <span></span>
+        <div class="heading">
+            <span>Booking</span>
             <h1>Book Now</h1>
         </div>
-        <div class="about-container">
-            <div class="box">
-                <div class="box-img">
+        <div class="container">
+            <form id="bookingForm">
+                <h2>Booking Details</h2>
+                <label>Full Name</label>
+                <input type="text" id="name" placeholder="Enter your name">
+
+                <label>Contact Number</label>
+                <input type="text" id="contact" placeholder="Enter your number">
+
+                <label>Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email">
+
+                <label>Pick-Up Date</label>
+                <input type="date" id="pickup">
+
+                <label>Return Date</label>
+                <input type="date" id="return">
+
+                <label>Select Car</label>
+                <select id="car">
+                    <option value="">-- Select a Car --</option>
+                    <option>2023 Vios</option>
+                    <option>2024 Vios</option>
+                    <option>2022 Innova</option>
+                    <option>2022 Hiace</option>
+                    <option>2017 Mirage G4</option>
+                    <option>2016 Mirage Hatchback</option>
+                </select>
+
+                <button type="submit">Submit Booking</button>
+                <div id="message" class="message"></div>
+            </form>
+        </div>
+    </section>
+
+    <section class="footer">
+        <div class="footer-container">
+            <div class="footer-box">
+                <a href="#" class="logo"><img src="logo1.jpg" alt=""></a>
+                <p>We provide affordable and reliable car rental services for all your travel needs.</p>
+                <div class="social-footer">
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                    <a href="#"><i class='bx bxl-tiktok'></i></a>
                 </div>
-
-         <form id="bookingForm">
-        <label>Full Name</label>
-        <input type="text" id="name">
-
-        <label>Contact Number</label>
-        <input type="text" id="contact">
-
-        <label>Email Address</label>
-        <input type="email" id="email">
-
-        <label>Pick-Up Date</label>
-        <input type="date" id="pickup">
-
-        <label>Return Date</label>
-        <input type="date" id="return">
-
-        <label>Select Car</label>
-        <select id="car">
-            <option value="">-- Select a Car --</option>
-            <option>2023 Vios</option>
-            <option>2024 Vios</option>
-            <option>2022 Innova</option>
-            <option>2022 Hiace</option>
-            <option>2017 Mirage G4</option>
-            <option>2016 Mirage Hatchback</option>
-        </select>
-
-        <button type="submit">Submit Booking</button>
-
-        <div id="message" class="message"></div>
-
-        <script>
-    const form = document.getElementById("bookingForm");
-    const message = document.getElementById("message");
-
-    form.addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        const name = document.getElementById("name").value.trim();
-        const contact = document.getElementById("contact").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const pickup = document.getElementById("pickup").value;
-        const returnDate = document.getElementById("return").value;
-        const car = document.getElementById("car").value;
-
-        if (name === "" || contact === "" || email === "" || pickup === "" || returnDate === "" || car === "") {
-            message.style.display = "block";
-            message.className = "message error";
-            message.innerHTML = "Please fill in all required fields.";
-            return;
-        }
-
-        message.style.display = "block";
-        message.className = "message success";
-        message.innerHTML = "Booking Successful!";
-
-        form.reset();
-    });
-</script>
-
-    </form>
+            </div>
+            <div class="footer-box">
+                <h3>Page Links</h3>
+                <div class="link-list">
+                    <a href="home.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="services.html">Services</a>
+                    <a href="book.html">Book Now</a>
+                    <a href="reviews.html">Reviews</a>
+                </div>
+            </div>
+            <div class="footer-box">
+                <h3>Contact</h3>
+                <div class="contact-info">
+                    <p><i class='bx bxs-map'></i> Cagayan De Oro City, PH</p>
+                    <p><i class='bx bxs-phone'></i> +63 912 345 6789</p>
+                    <p><i class='bx bxs-envelope'></i> info@carrental.com</p>
+                </div>
+            </div>
+            <div class="footer-box">
+                <h3>Newsletter</h3>
+                <p>Subscribe for the latest updates and offers.</p>
+                <div class="newsletter-box">
+                    <input type="email" placeholder="Enter your email">
+                    <a href="#" class="btn">Subscribe</a>
+                </div>
             </div>
         </div>
+        <div class="copyright">
+            <p>&#169; Car Rental. All Right Reserved.</p>
+        </div>
+    </section>
 
-        <script src="https://unpkg.com/scrollreveal"></script>
-    
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script src="main.js"></script>
 </body>
 </html>
