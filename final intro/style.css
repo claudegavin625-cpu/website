@@ -662,3 +662,434 @@ body {
         padding: 30px 20px;
     }
 }
+/* --- Carousel Styles (Add to bottom of style.css) --- */
+.founders {
+    text-align: center;
+    background: #f9f9f9;
+    padding: 50px 20px;
+    overflow: hidden; /* Hide anything outside the container */
+}
+.founders h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+/* The window that shows only 3 items */
+.carousel-viewport {
+    width: 100%;
+    max-width: 1100px; /* Limits width on big screens */
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+/* The long strip containing all items */
+.carousel-track {
+    display: flex;
+    gap: 20px; /* Space between cards */
+    width: max-content; /* Ensure track is as wide as all items */
+    /* Transition is handled in JS */
+}
+
+/* Individual Founder Card */
+.founder-card {
+    /* calculation: (100% width - (2 gaps * 20px)) / 3 items */
+    width: calc((1100px - 40px) / 3); 
+    min-width: 300px; /* Fallback for smaller screens */
+    background: #fff;
+    padding: 20px;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1150px) {
+    .founder-card {
+        /* On smaller screens, calculate based on viewport width */
+        width: calc((100vw - 80px) / 3);
+        min-width: 250px;
+    }
+}
+@media (max-width: 850px) {
+    .founder-card {
+        min-width: 300px; /* Show fewer items or scroll more on mobile */
+    }
+}
+
+.founder-img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--main-color);
+}
+.founder-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.founder-card h3 {
+    font-size: 1.2rem;
+    color: #474fa0;
+    margin-bottom: 5px;
+}
+.founder-card span {
+    font-size: 0.9rem;
+    color: var(--main-color);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 10px;
+}
+.founder-card p {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+/* --- About Section Styling --- */
+.about {
+    background-color: #fff;
+    padding: 80px 100px; /* More breathing room */
+}
+
+.about-container {
+    display: flex;
+    align-items: center; /* Vertically center the text with the image */
+    justify-content: center;
+    gap: 4rem; /* Space between image and text */
+    margin-top: 2rem;
+}
+
+/* Image Styling */
+.about-img {
+    flex: 1 1 400px; /* Flexible width */
+    position: relative;
+}
+
+.about-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px; /* Smooth rounded corners */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15); /* Elegant shadow */
+    transition: transform 0.4s ease;
+}
+
+.about-img img:hover {
+    transform: scale(1.03); /* Slight zoom effect */
+}
+
+/* Text Styling */
+.about-text {
+    flex: 1 1 400px;
+}
+
+.about-text span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #474fa0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    color: #333;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8; /* Better readability */
+    margin-bottom: 2rem;
+}
+
+.about-text .btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #474fa0;
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.about-text .btn:hover {
+    background: skyblue; /* Uses your main color variable */
+}
+
+/* Responsive Design for About Section */
+@media (max-width: 900px) {
+    .about {
+        padding: 50px 40px;
+    }
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-text h2 {
+        font-size: 2rem;
+    }
+}
+/* --- New Car-Specific Reviews Styling --- */
+.reviews {
+    background: #f9f9f9;
+    padding: 80px 100px;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.review-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Card Header: Car Image */
+.review-header {
+    height: 180px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.review-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.review-card:hover .review-header img {
+    transform: scale(1.05);
+}
+
+/* Rating Badge overlay on image */
+.rating-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 5px 12px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.rating-badge i {
+    color: #FFD700; /* Gold star */
+}
+
+/* Card Content */
+.review-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.review-body h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.review-body .car-type {
+    font-size: 0.85rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+/* Featured Review Section */
+.featured-review {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: auto; /* Pushes to bottom */
+    position: relative;
+}
+
+.featured-review p {
+    font-size: 0.9rem;
+    color: #555;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.reviewer-name {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--main-color);
+    text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .reviews {
+        padding: 50px 20px;
+    }
+}
+/* --- Updated Reviews Styling (2-3 Reviews per card) --- */
+.reviews {
+    background: #f9f9f9;
+    padding: 80px 100px;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly wider cards */
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.review-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.review-header {
+    height: 180px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.review-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.review-card:hover .review-header img {
+    transform: scale(1.05);
+}
+
+.rating-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 5px 12px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.rating-badge i {
+    color: #FFD700;
+}
+
+.review-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.review-body h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.review-body .car-type {
+    font-size: 0.85rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+/* Container for the list of reviews */
+.reviews-list {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: auto;
+    border: 1px solid #eee;
+}
+
+/* Individual Review Item */
+.review-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.review-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.review-item p {
+    font-size: 0.9rem;
+    color: #555;
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.reviewer-name {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--main-color);
+    text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .reviews {
+        padding: 50px 20px;
+    }
+}
