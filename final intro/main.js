@@ -8,7 +8,7 @@ if (document.getElementById("adminDate")) {
 }
 
 /* ==============================================================
-   2. NAVBAR & MENU
+   2.    NAVBAR & MENU
    ============================================================== */
 let menu = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');

@@ -256,7 +256,7 @@ body {
             font-family: Arial, sans-serif;
             background: #f4f4f4;
             margin: 0;
-            padding: 0;
+            padding: 0;                                   
         }
 
         .container {
@@ -429,6 +429,7 @@ body {
     padding: 10px;
     font-size: 21px;
 }
+
 /* Making Responsive */
 @media (max-width: 991px) {
     header {
@@ -545,7 +546,6 @@ body {
     }
 }
 
-/* Footer Styling */
 .footer {
     background: #fff;
     padding: 50px 100px;
@@ -618,7 +618,6 @@ body {
     font-size: 1.2rem;
 }
 
-/* Newsletter in Footer */
 .newsletter-box input {
     width: 100%;
     padding: 10px;
@@ -1093,7 +1092,6 @@ body {
         padding: 50px 20px;
     }
 }
-
 /* --- Authentication Pages Styling --- */
 .auth-body {
     background: #eeeff1;
