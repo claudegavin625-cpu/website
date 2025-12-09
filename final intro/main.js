@@ -228,3 +228,68 @@ if (headerBtnDiv && !window.location.pathname.includes("admin.html")) {
         });
     }
 }
+
+/* ==============================================================
+   EXISTING CODE ABOVE...
+   ============================================================== */
+
+/* ==============================================================
+   7. DYNAMIC BOOKING PREVIEW (Add this to main.js)
+   ============================================================== */
+// Run this only if we are on the book.html page
+if (window.location.pathname.includes("book.html")) {
+    
+    // 1. Get Parameters from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedCar = urlParams.get('car');
+    const selectedPrice = urlParams.get('price');
+
+    // 2. Define Image Map (Matches the exact names in services.html links)
+    const carImages = {
+        "2022 SUV INNOVA": "car1.jpg",
+        "2023 SEDAN VIOS": "car2.jpg",
+        "2022 HIACE": "car3.png",
+        "2017 SEDAN MIRAGE G4": "car4.jpg",
+        "2024 SEDAN RED VIOS": "car5.jpg",
+        "2016 HATCHBACK MIRAGE": "car6.jpg",
+        "Multicab 20 Seater": "car7.jpeg",
+        "BAJAJ RE": "car8.jpg"
+    };
+
+    // 3. Update UI if a car is selected
+    if (selectedCar) {
+        // Show the preview card
+        const previewCard = document.getElementById("carPreview");
+        if (previewCard) previewCard.style.display = "flex";
+
+        // Update Text
+        document.getElementById("previewName").innerText = selectedCar;
+        document.getElementById("previewPrice").innerHTML = `₱ ${parseInt(selectedPrice).toLocaleString()} <span>/ Day</span>`;
+        
+        // Update Image
+        if (carImages[selectedCar]) {
+            document.getElementById("previewImg").src = carImages[selectedCar];
+        }
+
+        // Auto-select the option in the dropdown
+        const selectBox = document.getElementById("car");
+        if (selectBox) {
+            selectBox.value = selectedCar;
+        }
+    }
+    
+    // Optional: Update preview if user changes the dropdown manually
+    const selectBox = document.getElementById("car");
+    if (selectBox) {
+        selectBox.addEventListener("change", function() {
+            const carName = this.value;
+            // You would need a way to look up price here if you want it dynamic on change
+            // For now, let's just update the image
+            if (carImages[carName]) {
+                document.getElementById("carPreview").style.display = "flex";
+                document.getElementById("previewImg").src = carImages[carName];
+                document.getElementById("previewName").innerText = carName;
+            }
+        });
+    }
+}

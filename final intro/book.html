@@ -25,51 +25,79 @@
     </header>
 
     <section class="book" id="book">
-        <div class="heading">
-            <span>Booking</span>
-            <h1>Book Your Ride</h1>
+    <div class="heading">
+        <span>Booking</span>
+        <h1>Complete Your Reservation</h1>
+    </div>
+
+    <div class="booking-wrapper">
+        
+        <div class="car-preview-card" id="carPreview" style="display: none;">
+            <span class="preview-label">You are booking:</span>
+            <div class="img-container">
+                <img id="previewImg" src="" alt="Selected Car">
+            </div>
+            <h3 id="previewName">Select a Car</h3>
+            <h2 id="previewPrice"></h2>
+            <div class="features">
+                <span><i class='bx bxs-gas-pump'></i> Gas</span>
+                <span><i class='bx bxs-car-mechanic'></i> Auto</span>
+                <span><i class='bx bxs-user'></i> 5 Seats</span>
+            </div>
         </div>
-        <div class="container">
+
+        <div class="form-side">
             <form id="bookingForm">
-                <h2>Booking Details</h2>
-                <p style="text-align:center; margin-bottom:20px; color:#666;">Fill up the form to send a request to the admin.</p>
+                <h2>Details</h2>
                 
-                <label>Full Name</label>
-                <input type="text" id="name" placeholder="Enter your full name" required>
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="name" placeholder="John Doe" required>
+                </div>
 
-                <label>Contact Number</label>
-                <input type="tel" id="contact" placeholder="e.g., 0912 345 6789" required>
-
-                <label>Email Address</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
-
-                <div style="display: flex; gap: 1rem;">
-                    <div style="flex: 1;">
-                        <label>Pick-Up Date</label>
-                        <input type="date" id="pickup" required>
-                    </div>
-                    <div style="flex: 1;">
-                        <label>Return Date</label>
-                        <input type="date" id="return" required>
+                <div class="input-group">
+                    <label>Contact & Email</label>
+                    <div class="row">
+                        <input type="tel" id="contact" placeholder="0912 345 6789" required>
+                        <input type="email" id="email" placeholder="email@example.com" required>
                     </div>
                 </div>
 
-                <label>Select Car</label>
-                <select id="car" required>
-                    <option value="">-- Select a Car --</option>
-                    <option value="2023 Vios">2023 Vios</option>
-                    <option value="2024 Vios Red">2024 Vios (Red)</option>
-                    <option value="2022 Innova">2022 Innova</option>
-                    <option value="2022 Hiace">2022 Hiace</option>
-                    <option value="2017 Mirage G4">2017 Mirage G4</option>
-                    <option value="2016 Mirage Hatchback">2016 Mirage Hatchback</option>
-                </select>
+                <div class="input-group">
+                    <label>Schedule</label>
+                    <div class="row">
+                        <div class="date-field">
+                            <span>Pick-Up</span>
+                            <input type="date" id="pickup" required>
+                        </div>
+                        <div class="date-field">
+                            <span>Return</span>
+                            <input type="date" id="return" required>
+                        </div>
+                    </div>
+                </div>
 
-                <button type="submit">Submit Booking Request</button>
+                <div class="input-group">
+                    <label>Vehicle Selection</label>
+                    <select id="car" required>
+                        <option value="">-- Choose Car --</option>
+                        <option value="2022 SUV INNOVA">2022 SUV Innova</option>
+                        <option value="2023 SEDAN VIOS">2023 Sedan Vios</option>
+                        <option value="2022 HIACE">2022 Hiace</option>
+                        <option value="2017 SEDAN MIRAGE G4">2017 Mirage G4</option>
+                        <option value="2024 SEDAN RED VIOS">2024 Vios (Red)</option>
+                        <option value="2016 HATCHBACK MIRAGE">2016 Mirage Hatchback</option>
+                        <option value="Multicab 20 Seater">Multicab 20 Seater</option>
+                        <option value="BAJAJ RE">Bajaj RE</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="book-btn">Confirm Booking</button>
                 <div id="message" class="message"></div>
             </form>
         </div>
-    </section>
+    </div>
+</section>
 
     <section class="footer">
         <div class="footer-container">
