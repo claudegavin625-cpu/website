@@ -52,7 +52,7 @@
                 
                 <div class="input-group">
                     <label>Full Name</label>
-                    <input type="text" id="name" placeholder="John Doe" required>
+                    <input type="text" id="name" placeholder="Full Name" required>
                 </div>
 
                 <div class="input-group">
@@ -134,5 +134,89 @@
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="main.js"></script>
+    <script>
+    // 1. Car Data Configuration (Prices and Images)
+    const carDatabase = {
+        "2022 SUV INNOVA":      { price: 2000, img: "car1.jpg" },
+        "2023 SEDAN VIOS":      { price: 1800, img: "car2.jpg" },
+        "2022 HIACE":           { price: 3000, img: "car3.png" },
+        "2017 SEDAN MIRAGE G4": { price: 1500, img: "car4.jpg" },
+        "2024 SEDAN RED VIOS":  { price: 1800, img: "car5.jpg" },
+        "2016 HATCHBACK MIRAGE":{ price: 1500, img: "car6.jpg" },
+        "Multicab 20 Seater":   { price: 1000, img: "car7.jpeg" },
+        "BAJAJ RE":             { price: 1000, img: "car8.jpg" }
+    };
+
+    const form = document.getElementById('bookingForm');
+    const carSelect = document.getElementById('car');
+    
+    // Optional: Update Preview when dropdown changes
+    carSelect.addEventListener('change', function() {
+        const selectedKey = this.value;
+        const previewDiv = document.getElementById('carPreview');
+        const previewImg = document.getElementById('previewImg');
+        const previewName = document.getElementById('previewName');
+        const previewPrice = document.getElementById('previewPrice');
+
+        if (carDatabase[selectedKey]) {
+            previewDiv.style.display = 'block';
+            previewImg.src = carDatabase[selectedKey].img;
+            previewName.innerText = selectedKey;
+            previewPrice.innerText = "₱ " + carDatabase[selectedKey].price + " / Day";
+        } else {
+            previewDiv.style.display = 'none';
+        }
+    });
+
+    // 2. Handle Form Submission
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Stop page from reloading
+
+        // Get Input Values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const carName = carSelect.value;
+        const pickupDate = new Date(document.getElementById('pickup').value);
+        const returnDate = new Date(document.getElementById('return').value);
+
+        // Validation: Check if dates are valid
+        if (returnDate <= pickupDate) {
+            alert("Return date must be after pick-up date!");
+            return;
+        }
+
+        // Calculate Days
+        const diffTime = Math.abs(returnDate - pickupDate);
+        const days = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+
+        // Get Car Details
+        const carInfo = carDatabase[carName];
+        if (!carInfo) {
+            alert("Please select a valid car.");
+            return;
+        }
+
+        const totalCost = days * carInfo.price;
+
+        // 3. Create Receipt Data Object
+        const receiptData = {
+            orderId: 'TRX-' + Math.floor(Math.random() * 1000000),
+            date: new Date().toLocaleDateString(),
+            customerName: name,
+            email: email,
+            car: carName,
+            image: carInfo.img,
+            days: days,
+            pricePerDay: carInfo.price,
+            total: totalCost,
+            pickup: pickupDate.toDateString(),
+            dropoff: returnDate.toDateString()
+        };
+
+        // 4. Save to Local Storage and Redirect
+        localStorage.setItem('rentalReceipt', JSON.stringify(receiptData));
+        window.location.href = 'receipt.html';
+    });
+</script>
 </body>
 </html>

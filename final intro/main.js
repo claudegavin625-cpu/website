@@ -1,6 +1,4 @@
-/* ==============================================================
-   1. GLOBAL SETTINGS
-   ============================================================== */
+
 // Set Date for Admin Dashboard
 if (document.getElementById("adminDate")) {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
