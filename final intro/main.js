@@ -1,4 +1,3 @@
-
 // Set Date for Admin Dashboard
 if (document.getElementById("adminDate")) {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -25,62 +24,7 @@ window.onscroll = () => {
 }
 
 /* ==============================================================
-   3. BOOKING LOGIC (USER SIDE)
-   ============================================================== */
-const bookingForm = document.getElementById("bookingForm");
-const message = document.getElementById("message");
-
-if (bookingForm) {
-    bookingForm.addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        // 1. Check if user is logged in (Optional: remove if you want guests to book)
-        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-        if (!currentUser) {
-            alert("Please Login to book a car.");
-            window.location.href = "login.html";
-            return;
-        }
-
-        // 2. Get Values from HTML Inputs
-        const name = document.getElementById("name").value.trim();
-        const contact = document.getElementById("contact").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const pickup = document.getElementById("pickup").value;
-        const returnDate = document.getElementById("return").value;
-        const car = document.getElementById("car").value;
-
-        // 3. Create Booking Object
-        const newBooking = {
-            id: Date.now(), // Unique ID
-            name: name,
-            contact: contact,
-            email: email,
-            pickup: pickup,
-            returnDate: returnDate,
-            car: car,
-            status: "Pending",
-            price: 2000 // Placeholder price
-        };
-
-        // 4. Save to Local Storage ("Database")
-        let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
-        bookings.push(newBooking);
-        localStorage.setItem("bookings", JSON.stringify(bookings));
-
-        // 5. Show Success Message
-        if (message) {
-            message.style.display = "block";
-            message.className = "message success";
-            message.innerHTML = "Booking sent to Admin! Check dashboard.";
-        }
-        
-        bookingForm.reset();
-    });
-}
-
-/* ==============================================================
-   4. ADMIN DASHBOARD LOGIC (ADMIN SIDE)
+   3. ADMIN DASHBOARD LOGIC (ADMIN SIDE)
    ============================================================== */
 // Only run if we are on the Admin Page
 if (window.location.pathname.includes("admin.html")) {
@@ -113,8 +57,13 @@ function renderAdminDashboard() {
     document.getElementById("pendingBookings").innerText = bookings.filter(b => b.status === "Pending").length;
     
     // Revenue Calculation (Confirmed * 2000)
-    const confirmedCount = bookings.filter(b => b.status === "Confirmed").length;
-    document.getElementById("totalRevenue").innerText = (confirmedCount * 2000).toLocaleString();
+    // Note: Ideally revenue should sum actual prices, but keeping simple count logic for now
+    // or filtering checks if price exists.
+    const confirmedRevenue = bookings
+        .filter(b => b.status === "Confirmed")
+        .reduce((sum, b) => sum + (b.price || 2000), 0);
+        
+    document.getElementById("totalRevenue").innerText = confirmedRevenue.toLocaleString();
 
     // 3. Populate Booking Table
     const tableBody = document.getElementById("bookingTableBody");
@@ -170,7 +119,7 @@ window.deleteBooking = function(id) {
 };
 
 /* ==============================================================
-   5. LOGIN LOGIC (HARDCODED CREDENTIALS)
+   4. LOGIN LOGIC (HARDCODED CREDENTIALS)
    ============================================================== */
 const loginForm = document.getElementById("loginForm");
 if (loginForm) {
@@ -209,7 +158,7 @@ if (loginForm) {
 }
 
 /* ==============================================================
-   6. HEADER USER CHECK (Displays "Hi, User" or "Logout")
+   5. HEADER USER CHECK (Displays "Hi, User" or "Logout")
    ============================================================== */
 const headerBtnDiv = document.querySelector('.header-btn');
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -228,11 +177,7 @@ if (headerBtnDiv && !window.location.pathname.includes("admin.html")) {
 }
 
 /* ==============================================================
-   EXISTING CODE ABOVE...
-   ============================================================== */
-
-/* ==============================================================
-   7. DYNAMIC BOOKING PREVIEW (Add this to main.js)
+   6. DYNAMIC BOOKING PREVIEW (Add this to main.js)
    ============================================================== */
 // Run this only if we are on the book.html page
 if (window.location.pathname.includes("book.html")) {

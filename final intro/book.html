@@ -172,12 +172,25 @@
     form.addEventListener('submit', function(e) {
         e.preventDefault(); // Stop page from reloading
 
+        // --- CHECK LOGIN (Moved from main.js) ---
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        if (!currentUser) {
+            alert("Please Login to book a car.");
+            window.location.href = "login.html";
+            return;
+        }
+
         // Get Input Values
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
+        const contact = document.getElementById('contact').value;
         const carName = carSelect.value;
-        const pickupDate = new Date(document.getElementById('pickup').value);
-        const returnDate = new Date(document.getElementById('return').value);
+        const pickupDateVal = document.getElementById('pickup').value;
+        const returnDateVal = document.getElementById('return').value;
+
+        // Convert to Date objects for validation
+        const pickupDate = new Date(pickupDateVal);
+        const returnDate = new Date(returnDateVal);
 
         // Validation: Check if dates are valid
         if (returnDate <= pickupDate) {
@@ -198,7 +211,24 @@
 
         const totalCost = days * carInfo.price;
 
-        // 3. Create Receipt Data Object
+        // --- SAVE TO ADMIN DASHBOARD (Moved from main.js) ---
+        const newBooking = {
+            id: Date.now(), // Unique ID
+            name: name,
+            contact: contact,
+            email: email,
+            pickup: pickupDateVal,
+            returnDate: returnDateVal,
+            car: carName,
+            status: "Pending",
+            price: totalCost
+        };
+
+        let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+        bookings.push(newBooking);
+        localStorage.setItem("bookings", JSON.stringify(bookings));
+
+        // --- CREATE RECEIPT DATA ---
         const receiptData = {
             orderId: 'TRX-' + Math.floor(Math.random() * 1000000),
             date: new Date().toLocaleDateString(),
